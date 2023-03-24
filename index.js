@@ -225,7 +225,7 @@ const init = () => {
 
     fs.writeFileSync(distPath, render(teamMembers), "utf-8");
   };
-
+  
   createManager();
 };
 
