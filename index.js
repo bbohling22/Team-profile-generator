@@ -1,12 +1,17 @@
 const inquirer = require("inquirer");
 const path = require("path"); // Creates and formats file paths for us
 const fs = require("fs"); // fs = file system. Read and writes files
-
+const distPath = path.join(__dirname, 'dist', 'team.html');
 const Manager = require("./src/Manager");
 const Engineer = require("./src/Engineer");
 const Intern = require("./src/Intern");
 
+
+
+
 const teamMembers = [];
+
+
 
 const init = () => {
   const createManager = async () => {
@@ -216,17 +221,22 @@ const init = () => {
     }
   };
 
+  function render(teamMembers) {
+  
+  }
+
   const buildTeam = () => {
     const distDirectory = path.resolve(__dirname, "dist");
     const teamHtmlPath = path.join(distDirectory, "team.html");
     if (!fs.existsSync(distDirectory)) {
       fs.mkdirSync(distDirectory);
     }
-
-    fs.writeFileSync(distPath, render(teamMembers), "utf-8");
+    
+    fs.writeFileSync(distPath, render({teamMembers}), "utf-8");
   };
   
   createManager();
 };
+
 
 init();
